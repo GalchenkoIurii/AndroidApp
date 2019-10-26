@@ -11,8 +11,9 @@ import android.widget.TextView;
 public class MainActivity extends AppCompatActivity  { //implements View.OnClickListener
 
     private boolean isStart = true;
+//    private boolean isOperationKeyPressed = false;
     private double firstOperand = 0;
-    private double secondOperand = 0;
+//    private double result = 0;
     private TextView tv;
     private String mode = "";
 
@@ -48,10 +49,13 @@ public class MainActivity extends AppCompatActivity  { //implements View.OnClick
         Button btnMinus = (Button)findViewById(R.id.button9);
         Button btnMulti = (Button)findViewById(R.id.button5);
         Button btnDivide = (Button)findViewById(R.id.button10);
+        Button btnReset = (Button)findViewById(R.id.button16);
+
 
 //        btn1.setOnClickListener(this);
 //        btn2.setOnClickListener(this);
 
+        // set listeners to digit keys
         btn7.setOnClickListener(digitKey);
         btn8.setOnClickListener(digitKey);
         btn9.setOnClickListener(digitKey);
@@ -63,10 +67,12 @@ public class MainActivity extends AppCompatActivity  { //implements View.OnClick
         btn3.setOnClickListener(digitKey);
         btn0.setOnClickListener(digitKey);
 
-        btnPlus.setOnClickListener(digitKey);
-        btnMinus.setOnClickListener(digitKey);
-        btnMulti.setOnClickListener(digitKey);
-        btnDivide.setOnClickListener(digitKey);
+        // set listeners to operation keys
+        btnPlus.setOnClickListener(operationKey);
+        btnMinus.setOnClickListener(operationKey);
+        btnMulti.setOnClickListener(operationKey);
+        btnDivide.setOnClickListener(operationKey);
+        btnReset.setOnClickListener(resetKey);
     }
 
     public View.OnClickListener digitKey = new View.OnClickListener() {
@@ -92,27 +98,32 @@ public class MainActivity extends AppCompatActivity  { //implements View.OnClick
         public void onClick(View v) {
             tv = (TextView)findViewById(R.id.textView);
             Button btn = (Button) v;
-            tv.setText(btn.getText());
+            //isOperationKeyPressed = true;
 
-//            firstOperand = Double.parseDouble(tv.getText());
-//            tv.setText("0");
-//            isStart = true;
-//            mode = (Button) v.getText();  //  + - * /
+            firstOperand = Double.parseDouble(tv.getText().toString());
+            tv.setText("");
+            isStart = true;
+            mode = btn.getText().toString();
+
+            // tv.setText(btn.getText());
         }
 
-// 2.       firstOperand = Double.parseDouble(tv.getText());
-//        tv.setText("0");
-//        isStart = true;
-//        mode = (Button)v.getText();  //  + - * /
-
+        // 2.       firstOperand = Double.parseDouble(tv.getText());
+        //        tv.setText("0");
+        //        isStart = true;
+        //        mode = (Button)v.getText();  //  + - * /
     };
 
-
     // 3. handling pressing button C
-
-    // tv.setText(0);
-    // isStart = true;
-
+    public View.OnClickListener resetKey = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            tv = (TextView)findViewById(R.id.textView);
+            Button btn = (Button) v;
+            tv.setText("0");
+            isStart = true;
+        }
+    };
 
     // 4. handling pressing button =
 
