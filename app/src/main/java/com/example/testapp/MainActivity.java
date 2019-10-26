@@ -130,7 +130,23 @@ public class MainActivity extends AppCompatActivity  { //implements View.OnClick
     public View.OnClickListener resultKey = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
+            tv = (TextView)findViewById(R.id.textView);
+            double result = 0;
+            double secondOperand = Double.parseDouble(tv.getText().toString());
 
+            if(mode.equals("+")) {
+                result = firstOperand + secondOperand;
+            } else if(mode.equals("-")) {
+                result = firstOperand - secondOperand;
+            } else if(mode.equals("*")) {
+                result = firstOperand * secondOperand;
+            } else if(mode.equals("/")) {
+                result = firstOperand / secondOperand;
+            }
+
+            String resStr = String.valueOf(result);
+
+            tv.setText(resStr);
         }
     };
 
