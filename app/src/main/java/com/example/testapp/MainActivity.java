@@ -10,6 +10,13 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity  { //implements View.OnClickListener
 
+//    public boolean isStart = true;
+//    public double firstOperand = 0;
+//    public TextView tv;
+//    public string mode = "";
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,8 +66,50 @@ public class MainActivity extends AppCompatActivity  { //implements View.OnClick
             TextView tv = (TextView)findViewById(R.id.textView);
             Button btn = (Button) v;
             tv.setText(btn.getText());
+
+
+            // 1.    if(isStart) {
+//        tv.setText('');
+//        isStart = false;
+//    }
+
+//    Button b = (Button)v;
+//    tv.setText(tv.getText() + b.getText());
+
+
         }
     };
+
+    public View.OnClickListener operationKey = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+
+        }
+
+// 2.       firstOperand = Double.parseDouble(tv.getText());
+//        tv.setText("0");
+//        isStart = true;
+//        mode = (Button)v.getText();  //  + - * /
+
+    };
+
+
+    // 3. handling pressing button C
+
+    // tv.setText(0);
+    // isStart = true;
+
+
+    // 4. handling pressing button =
+
+    // double c = 0;
+    // double b = Double.parseDouble(tv.getText());
+    // if(mode.equals("+")) c = firstOperand + b;
+    // else if(mode.equals("-")) c = firstOperand - b;
+    // e.t.c.
+
+    // tv.setText(c.toString());
+
 
 
 //    @Override
