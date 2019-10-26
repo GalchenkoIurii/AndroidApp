@@ -10,11 +10,11 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity  { //implements View.OnClickListener
 
-//    public boolean isStart = true;
-//    public double firstOperand = 0;
-//    public TextView tv;
-//    public string mode = "";
-
+    private boolean isStart = true;
+    private double firstOperand = 0;
+    private double secondOperand = 0;
+    private TextView tv;
+    private String mode = "";
 
 
     @Override
@@ -31,8 +31,7 @@ public class MainActivity extends AppCompatActivity  { //implements View.OnClick
 //            }
 //        });
 
-
-
+        // digit buttons
         Button btn7 = (Button)findViewById(R.id.button);
         Button btn8 = (Button)findViewById(R.id.button2);
         Button btn9 = (Button)findViewById(R.id.button3);
@@ -44,7 +43,12 @@ public class MainActivity extends AppCompatActivity  { //implements View.OnClick
         Button btn3 = (Button)findViewById(R.id.button13);
         Button btn0 = (Button)findViewById(R.id.button17);
 
-//
+        // operation buttons
+        Button btnPlus = (Button)findViewById(R.id.button4);
+        Button btnMinus = (Button)findViewById(R.id.button9);
+        Button btnMulti = (Button)findViewById(R.id.button5);
+        Button btnDivide = (Button)findViewById(R.id.button10);
+
 //        btn1.setOnClickListener(this);
 //        btn2.setOnClickListener(this);
 
@@ -58,32 +62,42 @@ public class MainActivity extends AppCompatActivity  { //implements View.OnClick
         btn2.setOnClickListener(digitKey);
         btn3.setOnClickListener(digitKey);
         btn0.setOnClickListener(digitKey);
+
+        btnPlus.setOnClickListener(digitKey);
+        btnMinus.setOnClickListener(digitKey);
+        btnMulti.setOnClickListener(digitKey);
+        btnDivide.setOnClickListener(digitKey);
     }
 
     public View.OnClickListener digitKey = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            TextView tv = (TextView)findViewById(R.id.textView);
+            tv = (TextView)findViewById(R.id.textView);
             Button btn = (Button) v;
-            tv.setText(btn.getText());
 
-
-            // 1.    if(isStart) {
-//        tv.setText('');
-//        isStart = false;
-//    }
-
-//    Button b = (Button)v;
-//    tv.setText(tv.getText() + b.getText());
-
-
+            if(isStart) {
+                //tv.setText("");
+                tv.setText(btn.getText());
+                isStart = false;
+            } else {
+                String firstPart = tv.getText().toString();
+                String secondPart = btn.getText().toString();
+                tv.setText(firstPart + secondPart);
+            }
         }
     };
 
     public View.OnClickListener operationKey = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
+            tv = (TextView)findViewById(R.id.textView);
+            Button btn = (Button) v;
+            tv.setText(btn.getText());
 
+//            firstOperand = Double.parseDouble(tv.getText());
+//            tv.setText("0");
+//            isStart = true;
+//            mode = (Button) v.getText();  //  + - * /
         }
 
 // 2.       firstOperand = Double.parseDouble(tv.getText());
