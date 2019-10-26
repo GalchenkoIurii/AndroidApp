@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity  { //implements View.OnClick
         Button btnMulti = (Button)findViewById(R.id.button5);
         Button btnDivide = (Button)findViewById(R.id.button10);
         Button btnReset = (Button)findViewById(R.id.button16);
-
+        Button btnResult = (Button)findViewById(R.id.button19);
 
 //        btn1.setOnClickListener(this);
 //        btn2.setOnClickListener(this);
@@ -73,6 +73,7 @@ public class MainActivity extends AppCompatActivity  { //implements View.OnClick
         btnMulti.setOnClickListener(operationKey);
         btnDivide.setOnClickListener(operationKey);
         btnReset.setOnClickListener(resetKey);
+        btnResult.setOnClickListener(resultKey);
     }
 
     public View.OnClickListener digitKey = new View.OnClickListener() {
@@ -126,6 +127,13 @@ public class MainActivity extends AppCompatActivity  { //implements View.OnClick
     };
 
     // 4. handling pressing button =
+    public View.OnClickListener resultKey = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+
+        }
+    };
+
 
     // double c = 0;
     // double b = Double.parseDouble(tv.getText());
